@@ -13,8 +13,8 @@
 
 - name: install mongodb server
   package: 
-      name: mongodb-org
-      state: present
+    name: mongodb-org
+    state: present
 
 
 - name: start and enable mongodb
