@@ -31,4 +31,9 @@
   notify: restart mongod
 
 
+- name: restart mongod
+  service:
+    name: mongod
+    state: restarted
+
 
