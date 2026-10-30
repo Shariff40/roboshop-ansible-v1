@@ -12,7 +12,7 @@
 #     msg: "{{ app_name }}"       
 
 - name: install mongodb server
-   package: 
+  package: 
       name: mongodb-org
       state: present
 
