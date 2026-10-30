@@ -1,32 +1,39 @@
 - name: configure mongodb server
   hosts: mongodb
   become: yes
-    tasks:
-    - name: copy mongo repo
-      copy:
-        src: mongo.repo
-        dest: /etc/yum.repos.d/mongo.repo
+  tasks:
+  - name: copy mongo repo
+    copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
 
-    - name: install mongodb server
-      package:
-        name: mongodb-org
-        state: present
+# - name: test the inventory variable
+#   debug:
+#     msg: "{{ app_name }}"       
 
-    - name: start and enable mongodb
-      service:
-        name: mongod
-        state: started
-        enabled: yes
+- name: install mongodb server
+  package:
+    name: mongodb-org
+    state: present
 
-    - name: allow remote connections
-      replace:
-        path: /etc/mongod.conf
-        regexp: '127.0.0.1'
-        replace: '0.0.0.0'
-      notify: restart mongod
 
-  handlers:
-    - name: restart mongod
-      service:
-        name: mongod
-        state: restarted
+- name: start and enable mongodb
+  service:
+    name: mongod
+    state: started
+    enable: yes
+
+- name: allow remote connections
+  repalce:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+  notify: restart mongod
+
+
+- name: restart mongod
+  service:
+    name: mongod
+    state: restarted
+
+
