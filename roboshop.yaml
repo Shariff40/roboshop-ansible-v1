@@ -18,3 +18,4 @@
       region: us-east-1
     loop: "{{ instances }}"
     when: instance_action == "create"
+    
