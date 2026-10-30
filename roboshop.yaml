@@ -2,8 +2,8 @@
   hosts: local
   connection: local
   vars:
-    instances: ["mongodb", "redis", "mysql", "rabiitmq"]
-    action: create
+    instances: ["Mongodb", "Redis", "Mysql", "RabbitMQ"]
+    instance_action: create
     domain_name: shariffdevops.online
     ami_id: ami-0055977a6e828a4f4
   tasks:
@@ -17,4 +17,4 @@
       - "roboshop-{{ item }}"
       region: us-east-1
     loop: "{{ instances }}"
-    when: action == "create"
+    when: instance_action == "create"
