@@ -12,16 +12,16 @@
    - name: allow remote connections
      replace: 
        path: /etc/redis/redis.conf
-       regexp: "120.0.0.1"
+       regexp: "127.0.0.1"
        replace: "0.0.0.0"
 
    - name: disable protected mode
       lineinfile:
-        path: /etc/ssh/sshd_config
+        path: /etc/redis/redis.conf
         regexp:'^#protected-mode yes'
-        line: 'protected-mode yes'
+        line: 'protected-mode no'
 
-   - name: enable and start
+   - name: enable and start redis
      service:
         name: redis
         state: restarted
