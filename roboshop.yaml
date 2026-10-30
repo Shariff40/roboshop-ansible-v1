@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    instances: ["Mongodb", "Redis", "Mysql", "RabbitMQ"]
+    instances: ["Mongodb", "Redis", "MySQL", "RabbitMQ"]
     instance_action: create
     domain_name: shariffdevops.online
     ami_id: ami-0055977a6e828a4f4
