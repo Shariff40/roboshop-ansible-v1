@@ -19,7 +19,7 @@
 
 - name: start and enable mongodb
   service: 
-    name: momgodb
+    name: momgod
     state: started
     enable: yes
 
