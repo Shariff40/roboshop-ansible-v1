@@ -1,5 +1,5 @@
 - name: configure catalogue server
-  host: catalogue
+  hosts: catalogue
   become: yes
   tasks: 
     - name: disable default nodejs
@@ -36,13 +36,13 @@
     - name: create app directory
       file: 
         path: /app
-        satte: directory
+        state: directory
 
 
     - name: download catalogue application
       get_url: 
         url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
-        dset: /tmp/catalogue.zip
+        dest: /tmp/catalogue.zip
 
     - name: unzip catalouge
       unarchive:
@@ -64,7 +64,7 @@
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
 
-    - name: intall mongodb client
+    - name: install mongodb client
       dnf:
         name: mongodb-mongosh
         state: present
@@ -81,7 +81,7 @@
 
     - name: demon reload
       systemd_service:
-        demon_reload: true
+        daemon_reload: true
 
     - name: start and enable catalogue
       service: 
