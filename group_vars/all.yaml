@@ -3,3 +3,10 @@ ansible_password: DevOps321
 mysql_root_password: RoboShop@1
 mongodb_host: mongodb.shariffdevops.online
 redis_host: redis.shariffdevops.online
+catalogue_host: catalogue.shariffdevops.online
+cart_host: cart.shariffdevops.online
+user_host: user.shariffdevops.online
+rabbitmq_host: rabbitmq.shariffdevops.online
+mysql_host: mysql.shariffdevops.online
+shipping_host: shipping.shariffdevops.online
+payment_host: payment.shariffdevops.online

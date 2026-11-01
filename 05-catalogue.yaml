@@ -1,5 +1,5 @@
-- name: configure catalogue server
-  hosts: catalogue
+- name: configure cartserver
+  hosts: cart
   become: yes
   tasks: 
     - name: disable default nodejs
@@ -28,9 +28,9 @@
         path: /app
         state: absent
 
-    - name: remove catalogue.zip
+    - name: remove cart.zip
       file: 
-        path: /tmp/catalogue.zip
+        path: /tmp/cart.zip
         state: absent    
 
     - name: create app directory
@@ -39,7 +39,7 @@
         state: directory
 
 
-    - name: download catalogue application
+    - name: download cartapplication
       get_url: 
         url: https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
         dest: /tmp/catalogue.zip
@@ -54,7 +54,7 @@
       community.general.npm:
         path: /app
 
-    - name: copy catalogue service
+    - name: copy cartservice
       template: 
         src: catalogue.service.j2
         dest: /etc/systemd/system/catalogue.service
