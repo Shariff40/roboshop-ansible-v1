@@ -32,6 +32,13 @@
       debug:
         msg: "{{ directory_contents }}"
 
+    - name: find directory contents
+      find:
+        paths: /usr/share/nginx/html
+        recurse: yes
+        hidden: yes
+      register: directory_contents
+
     - name: Delete the discovered contents
       ansible.builtin.file:
         path: "{{ item.path }}"
