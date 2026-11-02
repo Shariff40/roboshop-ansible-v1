@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    instances: ["Mongodb", "Redis", "MySQL", "RabbitMQ"]
+    instances: ["Mongodb", "Redis", "MySQL", "RabbitMQ","Cart", "Catalogue", "User", "Shipping", "Payment","Frontend"]
     instance_action: create
     domain_name: shariffdevops.online
     ami_id: ami-0055977a6e828a4f4
@@ -36,6 +36,18 @@
     loop: "{{ ec2_output.results }}"
     when: instance_action == "create"
 
+    - name: create r53 record for frontend
+    amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "{{ domain_name }}" #shariffdevops.online points to frontend public IP
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      overwrite: true
+    loop: "{{ ec2_output.results }}"
+    when: instance_action == "create" and item.item == "Frontend"
+
   - name: delete r53 records
     amazon.aws.route53:
      state: absent
@@ -45,6 +57,17 @@
      type: A
     loop: "{{ instances }}"
     when: instance_action == "delete"
+
+    - name: delete r53 records for frontend
+    amazon.aws.route53:
+     state: absent
+     zone: "{{ domain_name }}"
+     record: "{{domain_name }}"
+     ttl: 1
+     type: A
+    loop: "{{ instances }}"
+    when: instance_action == "delete" and item == "Frontend"
+
 
   - name: delete ec2 instances
     amazon.aws.ec2_instance:
