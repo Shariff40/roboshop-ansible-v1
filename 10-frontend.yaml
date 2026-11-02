@@ -24,6 +24,10 @@
         file_type: any
       register: directory_content
 
+    - name: list directory content
+      command: ls -l /usr/share/nginx/html
+      register: directory_contents
+
     - name: print directory content
       debug:
         msg: "{{ directory_contents }}"
