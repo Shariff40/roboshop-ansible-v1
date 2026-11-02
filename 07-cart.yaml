@@ -1,5 +1,5 @@
-- name: configure cartserver
-  hosts: catalogue
+- name: configure cart server
+  hosts: cart
   become: yes
   tasks: 
     - name: disable default nodejs
@@ -28,9 +28,9 @@
         path: /app
         state: absent
 
-    - name: remove catalogue.zip
+    - name: remove cart.zip
       file: 
-        path: /tmp/catalogue.zip
+        path: /tmp/cart.zip
         state: absent    
 
     - name: create app directory
