@@ -46,11 +46,16 @@
           dest: /app
           remote_src: yes
 
+    - name: install virtualenv
+      pip:
+        name: virtualenv
+        executable: pip3.14
+
     - name: install dependencies in virtual environment
       ansible.builtin.pip:
         requirements: /app/requirements.txt
-        virtualenv: /app/venv
-        virtualenv_python: python3.14 -m venv
+        virtualenv: /app/.venv
+        virtualenv_command: python3.14 -m venv
 
     - name: copy payment service
       template: 
