@@ -6,12 +6,12 @@
       command: dnf module enable nginx:1.26 -y
 
     - name: install nginx
-        dnf:
-          name: nginx
-          state: present
+      dnf:
+        name: nginx
+        state: present
 
     - name: start and enable nginx
-       service:
+      service:
         name: nginx
         state: started
         enabled: yes
@@ -41,9 +41,9 @@
 
     - name: unzip frontend
       unarchive:
-          src: /tmp/frontend.zip
-          dest: /usr/share/nginx/html/
-          remote_src: yes
+        src: /tmp/frontend.zip
+        dest: /usr/share/nginx/html/
+        remote_src: yes
       
 
     - name: copy roboshop config
