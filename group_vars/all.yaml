@@ -10,3 +10,6 @@ rabbitmq_host: rabbitmq.shariffdevops.online
 mysql_host: mysql.shariffdevops.online
 shipping_host: shipping.shariffdevops.online
 payment_host: payment.shariffdevops.online
+mysql_root_password: RoboShop@1
+shipping_db_user: shipping
+shipping_db_password: RoboShop@1
