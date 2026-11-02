@@ -12,3 +12,5 @@ shipping_host: shipping.shariffdevops.online
 payment_host: payment.shariffdevops.online
 shipping_db_user: shipping
 shipping_db_password: RoboShop@1
+rabbitmq_user: roboshop
+rabbitmq_password: roboshop123
