@@ -64,9 +64,9 @@
 
     - name: install dependencies
       command: mvn clean package
-        args:
+      args:
           chdir: /app
-        environment:
-          MAVEN_OPTS: "-Djdk.tls.nameGroups=\"secp256r1, secp384r1, ffdhe2048\""
+        # environment:
+        #   MAVEN_OPTS: "-Djdk.tls.nameGroups=\"secp256r1, secp384r1, ffdhe2048\""
 
 
