@@ -24,7 +24,7 @@
         file_type: any
       register: directory_content
 
-    - name: print directory contents
+    - name: print directory content
       debug:
         msg: "{{ directory_contents }}"
 
